@@ -8,7 +8,7 @@ $ npm install rnd-flickr --save
 ```
 
 ## Usage
-```
+```javascript
 var rnd-flickr = require('rnd-flickr');
 
 var options = {
