@@ -1,0 +1,28 @@
+{
+  "name": "rnd-flickr",
+  "version": "1.0.0",
+  "description": "A node module that fetches a random image from Flickr!",
+  "keywords": ["random", "rnd", "image", "img", "flickr"],
+  "author": {
+    "name": "Kodie Grantham",
+    "email": "kodie.grantham@gmail.com",
+    "url": "http://kodieg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kodie/rnd-flickr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kodie/rnd-flickr/issues"
+  },
+  "homepage": "https://github.com/kodie/rnd-flickr",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js api_key=${api_key}"
+  },
+  "dependencies": {
+    "request": "^2.78.0",
+    "sharp": "^0.17.0"
+  }
+}
