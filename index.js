@@ -13,7 +13,7 @@ module.exports = function(options, cb) {
   url += `&content_type=1`;
   url += `&media=photos`;
   url += `&license=1,2,3,4,5,6,7`;
-  url += `&extras=date_taken,date_upload,geo,license,owner_name,tags,url_c,url_l,url_n,url_o,url_z`;
+  url += `&extras=date_taken,date_upload,geo,license,owner_name,tags,url_o,url_l,url_c,url_z,url_n`;
   url += `&sort=interestingness-desc`;
   url += `&api_key=${options.api_key}`;
 
@@ -39,6 +39,25 @@ module.exports = function(options, cb) {
             var images = body.photos.photo;
             var image_data = images[Math.floor((Math.random() * images.length))];
             var image_url = image_data['url_o'];
+
+            if (options.width || options.height) {
+              var sizes = ['n', 'z', 'c', 'l', 'o'];
+              for (i = 0; i < sizes.length; i++) {
+                var pass = true;
+                if (image_data['url_' + sizes[i]]) {
+                  if (options.width) {
+                    if (options.width > image_data['width_' + sizes[i]]) { pass = false; }
+                  }
+                  if (options.height) {
+                    if (options.height > image_data['height_' + sizes[i]]) { pass = false; }
+                  }
+                } else { pass = false; }
+                if (pass) {
+                  image_url = image_data['url_' + sizes[i]];
+                  break;
+                }
+              }
+            }
 
             request.get({encoding:'binary', url:image_url}, function(error, response, image_body) {
               if (!error) {
