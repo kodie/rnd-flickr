@@ -9,21 +9,21 @@ $ npm install rnd-flickr --save
 
 ## Usage
 ```javascript
-var rnd-flickr = require('rnd-flickr');
+var rndFlickr = require('rnd-flickr');
 
 var options = {
 	api_key: 'tklp9NgspoRhwTP7PTyBWoHweNAyyum1',
-    width: 270,
-    height: 300,
-    tags: ['kitten', 'puppy'],
-    tag_mode: 'any',
-    file: 'random_image.jpg'
+	width: 270,
+	height: 300,
+	tags: ['kitten', 'puppy'],
+	tag_mode: 'any',
+	file: 'random_image.jpg'
 };
 
-rnd-flickr(options, function(error, image, data) {
+rndFlickr(options, function(error, image, data) {
 	if (!error) {
-    	console.log(data);
-    } else { throw error; }
+		console.log(data);
+	} else { throw error; }
 });
 ```
 
