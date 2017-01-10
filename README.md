@@ -23,7 +23,7 @@ var options = {
 rndFlickr(options, function(error, image, data) {
 	if (!error) {
 		console.log(data);
-	} else { throw error; }
+	} else { console.log(new Error(error)); }
 });
 ```
 
