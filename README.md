@@ -79,6 +79,7 @@ $ osascript -e 'tell application "Finder" to set desktop picture to "/Users/Shar
 ```
 #### Cron Job
 You could even create a cron job to change your wallpaper automatically for you at a certain time every day:
+
 1. Save the above two commands in a file like `/Users/Shared/wallpaper.sh`
 1. Give the file executable permissions with this command: `chmod +x /Users/Shared/wallpaper.sh`
 1. Edit your crontab file with this command: `env EDITOR=nano crontab -e`
