@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 'use strict';
 
 process.env.VIPS_WARNING = 0;
@@ -26,8 +27,17 @@ module.exports = function(options, cb) {
   }
 
   if (options.tag_mode) { url += `&tag_mode=${options.tag_mode}`; }
-  if (options.width) { url += `&width=${options.width}`; }
-  if (options.height) { url += `&height=${options.height}`; }
+
+  if (options.width) {
+    options.width = parseInt(options.width);
+    url += `&width=${options.width}`;
+  }
+
+  if (options.height) {
+    options.height = parseInt(options.height);
+    url += `&height=${options.height}`;
+  }
+
   if (options.width || options.height) { url += `&dimension_search_mode=min`; }
 
   request.get(url, function(error, response, body) {
@@ -86,6 +96,13 @@ module.exports = function(options, cb) {
 
 if (require.main === module) {
   var options = {};
+  var varPrefix = 'rndFlickr_';
+
+  for (var key in process.env) {
+    if (key.indexOf(varPrefix) == 0) {
+      options[key.substring(varPrefix.length)] = process.env[key];
+    }
+  }
 
   if (process.argv.length > 2) {
     for (var i = 2; i < process.argv.length; i++) {
@@ -97,6 +114,6 @@ if (require.main === module) {
   module.exports(options, function(error, image, data) {
     if (!error) {
       console.log(data);
-    } else { throw error; }
+    } else { console.log(new Error(error)); }
   });
 }
