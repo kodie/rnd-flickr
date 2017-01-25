@@ -1,6 +1,6 @@
 {
   "name": "rnd-flickr",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A node module that fetches a random image from Flickr!",
   "keywords": [
     "random",
