@@ -18,7 +18,7 @@ module.exports = function(options, cb) {
   url += `&sort=interestingness-desc`;
   url += `&api_key=${options.api_key}`;
 
-  if (!cb) { var cb = function(e, i, d) { if (e) { throw e; } } }
+  if (!cb) { var cb = function(e, i, d) { if (e) { console.log(new Error(e)); } } }
 
   if (options.tags) {
     if (typeof options.tags === 'object') {
