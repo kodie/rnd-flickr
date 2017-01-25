@@ -18,6 +18,7 @@ var options = {
 	height: 300,
 	tags: ['kitten', 'puppy'],
 	tag_mode: 'any',
+	content_type: 1,
 	file: 'random_image.jpg'
 };
 
@@ -37,6 +38,7 @@ $ npm i rnd-flickr -g
 ```shell
 $ export rndFlickr_api_key=tklp9NgspoRhwTP7PTyBWoHweNAyyum1
 $ export rndFlickr_tag_mode=any
+$ export rndFlickr_content_type=1
 $ rnd-flickr width=270 height=300 tags=kitten,puppy file=~/Desktop/random_image.jpg
 ```
 
@@ -47,6 +49,14 @@ $ rnd-flickr width=270 height=300 tags=kitten,puppy file=~/Desktop/random_image.
 * `tags` - The tags that you would like the image to have. Can be an array or a comma seperated string.
 * `tag_mode` - Set to `any` or `all` to specify if the image should have any of the tags or all of them.
 * `file` - If specified, the image will be saved as the specified file.
+* `content_type` - The type of content you would like the image to be:
+	* 1 for photos only.
+	* 2 for screenshots only.
+	* 3 for 'other' only.
+	* 4 for photos and screenshots.
+	* 5 for screenshots and 'other'.
+	* 6 for photos and 'other'.
+	* 7 for photos, screenshots, and 'other' (all).
 
 ## Return
 The callback function will return the following parameters in order:

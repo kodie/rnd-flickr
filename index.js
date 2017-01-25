@@ -11,7 +11,6 @@ module.exports = function(options, cb) {
   url += `&format=json`;
   url += `&nojsoncallback=1`;
   url += `&per_page=500`;
-  url += `&content_type=1`;
   url += `&media=photos`;
   url += `&license=1,2,3,4,5,6,7`;
   url += `&extras=date_taken,date_upload,geo,license,owner_name,tags,url_o,url_l,url_c,url_z,url_n`;
@@ -19,6 +18,8 @@ module.exports = function(options, cb) {
   url += `&api_key=${options.api_key}`;
 
   if (!cb) { var cb = function(e, i, d) { if (e) { console.log(new Error(e)); } } }
+
+  if (options.content_type) { url += `&content_type=${options.content_type}`; }
 
   if (options.tags) {
     if (typeof options.tags === 'object') {
