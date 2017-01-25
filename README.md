@@ -54,5 +54,37 @@ The callback function will return the following parameters in order:
 * `image` - A buffer with the image.
 * `data` - The image data from Flickr.
 
+## Wallpaper
+You could easily use this to set a random wallpaper for you.
+
+### Mac OS X
+#### Setup
+```shell
+# Install rnd-flickr as a global module
+$ npm i rnd-flickr -g
+
+# Set an environmental variable with your Flickr API key
+$ echo "export rndFlickr_api_key=YOUR_FLICKR_API_KEY_HERE" >> ~/.bash_profile
+
+# Reload your bash profile
+$ source ~/.bash_profile
+```
+#### Usage
+```shell
+# Create the image
+$ rnd-flickr width=1280 height=800 tags=puppy,kitten tag_mode=any file=/Users/Shared/wallpaper.jpg
+
+# Set the wallpaper
+$ osascript -e 'tell application "Finder" to set desktop picture to "/Users/Shared/wallpaper.jpg" as POSIX file'
+```
+#### Cron Job
+You could even create a cron job to change your wallpaper automatically for you at a certain time every day:
+1. Save the above two commands in a file like `/Users/Shared/wallpaper.sh`
+1. Give the file executable permissions with this command: `chmod +x /Users/Shared/wallpaper.sh`
+1. Edit your crontab file with this command: `env EDITOR=nano crontab -e`
+1. Put this in there: `00 12 * * *	/Users/Shared/wallpaper.sh`
+
+And that's it! Your wallpaper will be replaced with a random one everyday at noon. [Read more about crontab here](http://www.adminschoice.com/crontab-quick-reference).
+
 ## License
 MIT. See the License file for more info.
