@@ -2,12 +2,13 @@
 
 A node module that fetches a random image from [Flickr](https://www.flickr.com)!
 
-## Installation
+## Installation & Usage
+### via Module:
+#### Installation:
+```shell
+$ npm i rnd-flickr -S
 ```
-$ npm install rnd-flickr --save
-```
-
-## Usage
+#### Usage:
 ```javascript
 var rndFlickr = require('rnd-flickr');
 
@@ -25,6 +26,18 @@ rndFlickr(options, function(error, image, data) {
 		console.log(data);
 	} else { console.log(new Error(error)); }
 });
+```
+
+### via Command Line Interface:
+#### Installation:
+```shell
+$ npm i rnd-flickr -g
+```
+#### Usage:
+```shell
+$ export rndFlickr_api_key=tklp9NgspoRhwTP7PTyBWoHweNAyyum1
+$ export rndFlickr_tag_mode=any
+$ rnd-flickr width=270 height=300 tags=kitten,puppy file=~/Desktop/random_image.jpg
 ```
 
 ## Options
