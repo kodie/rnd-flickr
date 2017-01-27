@@ -1,4 +1,4 @@
-# rnd-flickr
+# rnd-flickr [![npm version](https://badge.fury.io/js/rnd-flickr.svg)](https://badge.fury.io/js/rnd-flickr)
 
 A node module that fetches a random image from [Flickr](https://www.flickr.com)!
 
