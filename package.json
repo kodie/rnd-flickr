@@ -26,13 +26,10 @@
   "homepage": "https://github.com/kodie/rnd-flickr",
   "license": "MIT",
   "main": "index.js",
-  "bin": {
-    "rnd-flickr": "index.js"
-  },
-  "scripts": {
-    "test": "node index.js"
-  },
+  "bin": "index.js",
   "dependencies": {
+    "fs": "0.0.1-security",
+    "promise": "^7.1.1",
     "request": "^2.78.0",
     "sharp": "^0.17.0"
   }
