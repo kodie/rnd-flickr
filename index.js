@@ -20,7 +20,7 @@ function hash(str) {
 
 function setupCache(options) {
   if (options.cache_path) {
-    if (!options.cache_expire) { options.cache_expire = 1000*60*60*6; }
+    if (!options.cache_expire) { options.cache_expire = 3600000; }
 
     if (typeof options.cache_path == 'string') {
       if (!fs.existsSync(options.cache_path)) {
