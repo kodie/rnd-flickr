@@ -57,6 +57,10 @@ $ rnd-flickr width=270 height=300 tags=kitten,puppy file=~/Desktop/random_image.
 	* 5 for screenshots and 'other'.
 	* 6 for photos and 'other'.
 	* 7 for photos, screenshots, and 'other' (all).
+* `cache_path` - If specified, cache for API requests and images will be saved to this path. Can either be a string to set the cache path for both requests and images, or an object to set paths individually.
+* `cache_path.images` - If specified, cache for images will be saved to this path. Can be set to empty string to disable image caching.
+* `cache_path.requests` - If specified, cache for API requests will be saved to this path. Can be set to empty string to disable request caching.
+* `cache_expire` - The number of milliseconds before a cache file should be deleted. Default is `3600000` (1 hour)
 
 ## Return
 The callback function will return the following parameters in order:
