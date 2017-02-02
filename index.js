@@ -104,7 +104,7 @@ function getImageListFromServer(options, url) {
 
           if (body.stat !== 'fail') {
             if (body.photos && body.photos.photo.length) {
-              if (options.cache_path.requests) {
+              if (options.cache_path && options.cache_path.requests) {
                 fs.writeFile(`${options.cache_path.requests}/${hash(url)}.json`, JSON.stringify(body.photos.photo));
               }
 
@@ -130,7 +130,7 @@ function getImageListFromCache(options, url) {
 }
 
 function getImageList(options, url) {
-  if (options.cache_path.requests) {
+  if (options.cache_path && options.cache_path.requests) {
     return getImageListFromCache(options, url);
   } else {
     return getImageListFromServer(options, url);
@@ -169,7 +169,7 @@ function getImageFromServer(options, url) {
       if (!error) {
         var buffer = new Buffer(image_body, 'binary');
 
-        if (options.cache_path.images) {
+        if (options.cache_path && options.cache_path.images) {
           fs.writeFile(`${options.cache_path.images}/${hash(url)}.jpg`, buffer);
         }
 
@@ -192,7 +192,7 @@ function getImageFromCache(options, url) {
 }
 
 function getImage(options, url) {
-  if (options.cache_path.images) {
+  if (options.cache_path && options.cache_path.images) {
     return getImageFromCache(options, url);
   } else {
     return getImageFromServer(options, url);
@@ -208,7 +208,7 @@ function resizeImage(options, url, image) {
 
   return img.toBuffer()
     .then(function(imgBuffer){
-      if (options.cache_path.images && (options.width || options.height)) {
+      if (options.cache_path && options.cache_path.images && (options.width || options.height)) {
         var cacheFile = `${options.cache_path.images}/${hash(url)}-${options.width}-${options.height}.jpg`;
         img.toFile(cacheFile, function(error, info){
           if (error) { throw new Error(e); }
@@ -238,7 +238,7 @@ function getResizedImageFromCache(options, url, image) {
 }
 
 function getResizedImage(options, url, image) {
-  if (options.cache_path.images) {
+  if (options.cache_path && options.cache_path.images) {
     return getResizedImageFromCache(options, url, image);
   } else {
     return resizeImage(options, url, image);
